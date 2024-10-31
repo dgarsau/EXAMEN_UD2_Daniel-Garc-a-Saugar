@@ -14,6 +14,8 @@ public class Examen {
 
         Random random = new Random();
 
+        //Defino todas las variables fuera ya que casi tod lo tengo en un bucle for puntos=0 porque necesito empezar por 0
+
         int num;
 
         String ordenador;
@@ -25,9 +27,14 @@ public class Examen {
 
         for (int i = 1; i <= 3; i++) {
 
+            //dentro de este bucle tengo la partida en sí, fuera solo calculo los resultados finales, el usuario elige
+            //escribiendo p, a o t, esto lo convierto a piedra, papel o tijera. El ordenador mediante un número aleatorio
+            //entre el 1 y el 3, depende del numero la variable ordenador será diferente.
+
             error = true; //error=true aquí porque en la siguiente ronda si es false no entra en el bucle otra vez
 
             System.out.println("Ronda " + i);
+            //i me sirve para indicar la ronda.
 
             while (error) {
 
@@ -36,6 +43,7 @@ public class Examen {
 
                 System.out.println("¿Piedra, papel o tijera? (p/a/t)");
                 eleccion = entrada.next();
+                eleccion = eleccion.toLowerCase(); //esto hace que funcione en caso de introducir una letra en mayúscula
 
                 if (!(eleccion.equals("p") || eleccion.equals("a") || eleccion.equals("t"))) {
                     System.out.println("ERROR. Entrada no válida");
@@ -68,6 +76,9 @@ public class Examen {
 
             System.out.println("El ordenador ha elegido: " + ordenador);
 
+
+            //este bloque compara eleccion con ordenador.
+
             if (ordenador.equals(eleccion)) {
                 System.out.println("Empate");
                 i--; //esto resta una ronda en caso de empate, al volver a empezar el bucle se suma uno así que no
@@ -89,6 +100,8 @@ public class Examen {
 
         }
 
+        //aquí se comprueba el resultado final y se imprime por pantalla
+
         if (puntos_o > puntos_u) {
             System.out.println("¡Gana el ordenador!");
         } else if (puntos_u > puntos_o) {
@@ -106,7 +119,7 @@ public class Examen {
         LocalDateTime actual = LocalDateTime.now();
         //esto obtiene la fecha actual
         int anyo_actual = actual.getYear();
-        //esto el año
+        //esto convierte el año en una variable int
 
         while(error) {
         //este error me sirve para controlar la entrada del usuario, con un if en caso de que introduzca un año no válido
@@ -128,6 +141,7 @@ public class Examen {
             }
         }
 
+        //este for imprime desde el año de nacimiento hasta el actual y la edad que tenía el usuario en cada año.
         for(int i = 0 ; anyo<=anyo_actual ; anyo++){
             System.out.println(anyo + "-" + "edad: " + i);
             i++;
@@ -135,9 +149,3 @@ public class Examen {
         }
     }
 }
-
-
-
-
-
-
